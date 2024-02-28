@@ -21,3 +21,82 @@
 //  if user guesses paper and bot guesses scissors, bot wins
 //  if user guesses scissors and bot guesses rock, bot wins
 
+
+
+function getUserChoice() {
+    let userGuess = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase();
+    
+    do {
+        if (userGuess === 'rock' || 
+            userGuess === 'paper' || 
+            userGuess === 'scissors') {
+                return userGuess;
+                break;
+        } else {
+            userGuess = prompt('Choose a REAL weapon: Rock, Paper, or Scissors. ').toLowerCase();
+        }
+    }
+    while (userGuess !== 'rock' || userGuess !== 'paper' || userGuess !== 'scissors');
+    }
+    
+
+function getComputerChoice() {
+    let rng = Math.floor((Math.random()*100) + 1);
+      if (rng < 34 && rng > 0) {
+        return 'rock';
+      } else if (rng >= 34 && rng <= 66) {
+        return 'paper';
+      } else {
+        return 'scissors'
+      }
+  };
+  
+let computerChoice = getComputerChoice();
+let userChoice = getUserChoice();
+
+
+// comparison logic for rock, paper, scissors game
+function rockPaperScissors() {
+    if (userChoice === 'rock' && computerChoice === 'paper') {
+        // console.log('You lose! Paper beats rock.');
+        return computerChoice;
+    } else if (userChoice === 'paper' && computerChoice === 'scissors') {
+        // console.log('You lose! Scissors beats paper.');
+        return computerChoice;
+    } else if (userChoice === 'scissors' && computerChoice === 'rock') {
+        // console.log('You lose! Rock beats scissors.');
+        return computerChoice;
+    } else if (userChoice === 'paper' && computerChoice === 'rock') {
+        // console.log('You win! Paper beats rock.');
+        return userChoice;
+    } else if (userChoice === 'scissors' && computerChoice === 'paper') {
+        // console.log('You win! Scissors beats paper.');
+        return userChoice;
+    } else if (userChoice === 'rock' && computerChoice === 'scissors') {
+        // console.log('You lose! Rock beats scissors.');
+        return userChoice;
+    } else {
+        alert('Tie! Try again.');
+   
+    }
+} 
+
+
+// console.log(computerChoice);
+// console.log(userChoice);
+
+let userScore = 0;
+let computerScore = 0;
+
+rockPaperScissors();
+rockPaperScissors();
+rockPaperScissors();
+rockPaperScissors();
+rockPaperScissors();
+
+// loop that runs the game 5 times, adds the game winner to the winning total
+// for (let i = 0; i <= 5; i++) {
+//     rockPaperScissors();
+//     console.log(rockPaperScissors());
+// };
+
