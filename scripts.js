@@ -22,27 +22,9 @@
 //  if user guesses scissors and bot guesses rock, bot wins
 
 
-// prompts user for their choice of rock, paper, scissors
-function getUserChoice() {
-    let userGuess = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase();
-    
-    do {
-        if (userGuess === 'rock' || 
-            userGuess === 'paper' || 
-            userGuess === 'scissors') {
-                return userGuess;
-                break;
-        } else {
-            userGuess = prompt('Choose a REAL weapon: Rock, Paper, or Scissors. ').toLowerCase();
-        }
-    }
-    while (userGuess !== 'rock' || userGuess !== 'paper' || userGuess !== 'scissors');
-    }
-    
-
-// generates computer choice for rock, paper, scissors
+// Generates random computer choice
 function getComputerChoice() {
-let rng = Math.floor((Math.random()*100) + 1);
+    let rng = Math.floor((Math.random()*100) + 1);
     if (rng < 34 && rng > 0) {
         return 'rock';
     } else if (rng >= 34 && rng <= 66) {
@@ -52,69 +34,86 @@ let rng = Math.floor((Math.random()*100) + 1);
     }
 };
 
+let computerChoice = getComputerChoice(); // sets computer choice function to a variable for easy calling
 
-
+// comparison logic for Rock, Paper, Scissors
 function playRound(userChoice, computerChoice) {
-    if (userChoice === 'rock' && computerChoice === 'paper') {
-        return 'You lose! Paper beats rock.';
-    } else if (userChoice === 'paper' && computerChoice === 'scissors') {
-        return 'You lose! Scissors beats paper.';
-    } else if (userChoice === 'scissors' && computerChoice === 'rock') {
-        return 'You lose! Rock beats scissors.';
-    } else if (userChoice === 'paper' && computerChoice === 'rock') {
-        return 'You win! Paper beats rock.';
-    } else if (userChoice === 'scissors' && computerChoice === 'paper') {
-        return 'You win! Scissors beats paper.';
-    } else if (userChoice === 'rock' && computerChoice === 'scissors') {
-        return 'You win! Rock beats scissors.';
+    let winner;
+    if (userChoice == 'rock' && computerChoice == 'paper') {
+        winner = 'You lose! Paper beats rock.';
+    } else if (userChoice == 'paper' && computerChoice == 'scissors') {
+        winner = 'You lose! Scissors beats paper.';
+    } else if (userChoice == 'scissors' && computerChoice == 'rock') {
+        winner = 'You lose! Rock beats scissors.';
+    } else if (userChoice == 'paper' && computerChoice == 'rock') {
+        winner = 'You win! Paper beats rock.';
+    } else if (userChoice == 'scissors' && computerChoice == 'paper') {
+        winner = 'You win! Scissors beats paper.';
+    } else if (userChoice == 'rock' && computerChoice == 'scissors') {
+        winner = 'You win! Rock beats scissors.';
     } else {
-        alert('Tie! Try again.');
-    }
+        winner = 'Tie! Try again.';
+    } 
+    return winner;
 } 
 
+// sets starting wins to zero for user and computer, along with total ties.
 let userScore = 0;
 let computerScore = 0;
 let tieGame = 0;
 
-let computerChoice = getComputerChoice();
-let userChoice = getUserChoice();
-
-// plays one game and returns the winner plus adds 1 to the winner's score.
+// game function
 function playGame() {
-    let roundResult = playRound(userChoice, computerChoice);
-    if ( roundResult.includes('win') === true) {
-        return userScore += 1;
-    } else if ( roundResult.includes('lose') === true ) {
-        return computerScore += 1;
-    } else {
-        return tieGame += 1;
+    
+    
+    getComputerChoice();
+    let compChoiceLoop = getComputerChoice();
+    let userChoice = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase(); //gets user's input for game
+    
+    console.log('The Computer Chose: ' + compChoiceLoop);
+    console.log('You Chose: ' + userChoice);
+    console.log(playRound(userChoice, compChoiceLoop));
+    
+
+
+    function score() {
+    let result = playRound(userChoice, compChoiceLoop);
+
+
+    if ( result.includes('win') == true) {
+            return userScore += 1;
+        } else if ( result.includes('lose') == true ) {
+            return computerScore += 1;
+        } else {
+            return tieGame += 1;
+        }
     }
+    score();
+    console.log('Your Score: ' + userScore);
+    console.log("Computer's Score: " + computerScore);
+    console.log("There have been " + tieGame + " ties!");
 }
 
-// runs the playgame function, prints the winner and displays the winner's total games won.
-playGame();
-console.log(playRound(userChoice, computerChoice));
-console.log('Your Score: ' + userScore);
-console.log("Computer's Score: " + computerScore);
+// loops the game 5 times
+for (let i = 0; i < 5; i++) {
+    playGame();
+}
 
 
-
-
-// function playGame() {
-
-//     let result = playRound(userChoice, computerChoice);
-
-
-
-//     for (let i = 0; i <= 5; i++) {
-//         playRound(userChoice, computerChoice);
+// TO BE USED AT A LATER DATE
+// prompts user for their choice of rock, paper, scissors, repeats question if they don't respond correctly.
+// function getUserChoice() {
+//     let userGuess = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase();
+    
+//     do {
+//         if (userGuess === 'rock' || 
+//             userGuess === 'paper' || 
+//             userGuess === 'scissors') {
+//                 return userGuess;
+//                 break;
+//         } else {
+//             userGuess = prompt('Choose a REAL weapon: Rock, Paper, or Scissors. ').toLowerCase();
+//         }
 //     }
+//     while (userGuess !== 'rock' || userGuess !== 'paper' || userGuess !== 'scissors');
 // }
-
-
-// loop that runs the game 5 times, adds the game winner to the winning total
-// for (let i = 0; i <= 5; i++) {
-//     rockPaperScissors();
-//     console.log(rockPaperScissors());
-// };
-
