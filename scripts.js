@@ -1,27 +1,3 @@
-// psuedocode
-//
-// getUserChoice =  prompt 3 choices for a user to select: rock, paper, or scissors (none case-sensitive answers
-//                  should work here)
-// getComputerChoice = bot generates a random choice between rock, paper, or scissors
-//                      (RNG and assign values 0-33, 34-66, 67-100)
-// rock beats scissors
-// paper beats rock
-// scissors beats paper
-// ^^^assign numerical value for easier comparison?
-//
-// playerSelection = getUserChoice
-// computerSelection = getComputerChoice
-//
-// code compares both answers to make a decision on who wins
-//  if user and bot guesses are equal, guess again
-//  if user guesses rock and bot guesses scissors, user wins
-//  if user guesses paper and bot guesses rock, user wins
-//  if user guesses scissors and bot guesses paper, user wins
-//  if user guesses rock and bot guesses paper, bot wins
-//  if user guesses paper and bot guesses scissors, bot wins
-//  if user guesses scissors and bot guesses rock, bot wins
-
-
 // Generates random computer choice
 function getComputerChoice() {
     let rng = Math.floor((Math.random()*100) + 1);
@@ -35,6 +11,24 @@ function getComputerChoice() {
 };
 
 let computerChoice = getComputerChoice(); // sets computer choice function to a variable for easy calling
+let userChoice;
+
+const startGame = document.querySelectorAll('button');
+startGame.forEach((button) => {
+    button.addEventListener('click', () => {
+        playGame();
+    });
+});
+
+// function testAlert() {
+//     alert('yay!');
+// }
+
+const rock = document.getElementById('rock');
+
+rock.addEventListener('click', () {
+});
+
 
 // comparison logic for Rock, Paper, Scissors
 function playRound(userChoice, computerChoice) {
@@ -68,20 +62,21 @@ function playGame() {
     
     getComputerChoice();
     let compChoiceLoop = getComputerChoice();
-    let userChoice = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase(); //gets user's input for game
-    
+    // let userGameChoice = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase(); //gets user's input for game
+    let userGameChoice = userChoice;    
+
     console.log('The Computer Chose: ' + compChoiceLoop);
-    console.log('You Chose: ' + userChoice);
-    console.log(playRound(userChoice, compChoiceLoop));
+    console.log('You Chose: ' + userGameChoice);
+    console.log(playRound(userGameChoice, compChoiceLoop));
     
 
 
     function score() {
-    let result = playRound(userChoice, compChoiceLoop);
+    let result = playRound(userGameChoice, compChoiceLoop);
 
 
     if ( result.includes('win') == true) {
-            return userScore += 1;
+            return userGameChoice += 1;
         } else if ( result.includes('lose') == true ) {
             return computerScore += 1;
         } else {
@@ -95,25 +90,8 @@ function playGame() {
 }
 
 // loops the game 5 times
-for (let i = 0; i < 5; i++) {
-    playGame();
-}
-
-
-// TO BE USED AT A LATER DATE
-// prompts user for their choice of rock, paper, scissors, repeats question if they don't respond correctly.
-// function getUserChoice() {
-//     let userGuess = prompt('Choose your weapon: Rock, Paper, or Scissors. ').toLowerCase();
-    
-//     do {
-//         if (userGuess === 'rock' || 
-//             userGuess === 'paper' || 
-//             userGuess === 'scissors') {
-//                 return userGuess;
-//                 break;
-//         } else {
-//             userGuess = prompt('Choose a REAL weapon: Rock, Paper, or Scissors. ').toLowerCase();
-//         }
-//     }
-//     while (userGuess !== 'rock' || userGuess !== 'paper' || userGuess !== 'scissors');
+// for (let i = 0; i < 5; i++) {
+//     playGame();
 // }
+
+
