@@ -1,3 +1,4 @@
+// Generates random computer choice
 function getComputerChoice() {
     let rng = Math.floor((Math.random()*100) + 1);
     if (rng < 34 && rng > 0) {
@@ -63,36 +64,36 @@ function stopGame() {
 const results = document.querySelector('.results'); // .results div in html doc
 
 //creates the container for the scoreboard
-const resContainer = document.createElement('div'); //creating new div 'resContainer'
-resContainer.classList.add('resContainer'); // add class name resContainer
+const resContainer = document.createElement('div'); 
+resContainer.classList.add('resContainer'); 
 
 //display user's choice to scoreboard
-const userRes = document.createElement('div'); //creating new div 'resContainer'
-userRes.classList.add('userRes'); // add class name resContainer
+const userRes = document.createElement('div'); 
+userRes.classList.add('userRes'); 
 
 //display computer's choice to scoreboard
-const computerRes = document.createElement('div'); //creating new div 'resContainer'
-computerRes.classList.add('computerRes'); // add class name resContainer
+const computerRes = document.createElement('div'); 
+computerRes.classList.add('computerRes'); 
 
 //display who won
-const winnerScoreboard = document.createElement('div'); //creating new div 'resContainer'
-winnerScoreboard.classList.add('winnerScoreboard'); // add class name resContainer
+const winnerScoreboard = document.createElement('div'); 
+winnerScoreboard.classList.add('winnerScoreboard'); 
 
 //display user's score
-const userScoreboard = document.createElement('div'); //creating new div 'resContainer'
-userScoreboard.classList.add('userScoreboard'); // add class name resContainer
+const userScoreboard = document.createElement('div'); 
+userScoreboard.classList.add('userScoreboard'); 
 
 //display ties
-const tieScoreboard = document.createElement('div'); //creating new div 'resContainer'
-tieScoreboard.classList.add('tieScoreboard'); // add class name resContainer
+const tieScoreboard = document.createElement('div'); 
+tieScoreboard.classList.add('tieScoreboard'); 
 
 //display computer's score
-const compScoreboard = document.createElement('div'); //creating new div 'resContainer'
-compScoreboard.classList.add('compScoreboard'); // add class name resContainer
+const compScoreboard = document.createElement('div'); 
+compScoreboard.classList.add('compScoreboard'); 
 
 //display winner announcement
-const winnerRes = document.createElement('div'); //creating new div 'resContainer'
-winnerRes.classList.add('winnerRes'); // add class name resContainer
+const winnerRes = document.createElement('div'); 
+winnerRes.classList.add('winnerRes'); 
 
 userRes.textContent = 'You Chose: ';
 computerRes.textContent = 'The Computer chose: ';
@@ -110,7 +111,6 @@ results.appendChild(tieScoreboard);
 results.appendChild(winnerRes);
 
 
-// Generates random computer choice
 
 
 let computerChoice = getComputerChoice(); // sets computer choice function to a variable for easy calling
